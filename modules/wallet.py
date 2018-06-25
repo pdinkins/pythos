@@ -17,7 +17,7 @@ class NewWallet:
     def __init__(self):
         self.timestamp = self.time_stamp()
         self.usr_nym = self.user_nym()
-        self.node_build = self.user_build()
+        self.node_build = 
         self.id = self.generate_user_id()
 
     def time_stamp(self):
@@ -28,81 +28,10 @@ class NewWallet:
         usernym = input('This info will be used to name the local wallet file.\nuser_nym> ')
         return usernym
     
-    def user_build(self):
-        # for testing the current local build
-        # initial import
-        try:
-            import os, sys
-            import platform
-            import datetime
-            import subprocess
-            import requests
-            import time
-            #import pynetwork.ipfs as ipfs
-            #from classes import User, Idea
-            #import bloacks, bloacks, chain, client
-            #import generate, menu, writer, ledger
-
-        except:
-            print('FATAL__BUILD__ERROR')
-            error = sys.exc_info()
-            print(error)
-            print(sys.exc_info()[0])
-            raise
-    
-        try:
-            # current cpu system configuration 
-            log('0_SYSTEM_CONFIG')
-            
-            self._0_node_ip = requests.get('http://ip.42.pl/raw').text
-            log(self._0_node_ip) 
-            
-            DEBUG_headers = False
-            if DEBUG_headers == True:
-                self._0_node_config = requests.get('http://ip.42.pl/headers').text
-                log(self._0_node_config)
-            else:
-                log('DEBUG_headers = ' + DEBUG_headers)
-
-            self._system_architecture = platform.uname()
-            log(self._system_architecture)
-            
-            self.node = platform.platform()
-            log(self.node)
-            
-            self._python_build = platform.python_build()
-            log(self._python_build)
-            
-            self._system = platform.system()
-            log(self._system)
-            
-            self._python_compiler = platform.python_compiler()
-            log(self._python_compiler)
-
-            log('0_SYSTEM_CONFIGFILE')
-            self.n0osd = [
-                self._0_node_ip,
-                self._0_node_config,
-                self._system_architecture,
-                self.node,
-                self._python_build,
-                self._system,
-                self._python_compiler
-            ]
-            return self.n0osd
-
-        except:
-            print(datetime.datetime.now(), 'SYSTEM LOG')
-            error = sys.exc_info()
-            print(error)
-            print(sys.exc_info()[0])
-            raise
-
-
     def generate_user_id(self):
         import hashlib
         wid = hashlib.sha256()
-        wid.update(str(self.timestamp).encode('utf=8') +
+        wid.update(str(self.timestamp).encode('utf-8') +
                     str(self.usr_nym).encode('utf-8') + 
                     str(self.node_build).encode('utf-8'))
         return wid.hexdigest()

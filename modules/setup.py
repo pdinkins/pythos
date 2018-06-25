@@ -18,9 +18,14 @@ class UserBuild:
     '''
 
     def __init__(self):
+        self.operating_sys = self.os_sys()
         self.node_ip = self.get_ip()
         self.build = self.user_build()
-      
+    
+    def os_sys(self):
+        import platform
+        return platform.system()
+    
     def get_ip(self):
         from requests import get
         try:
@@ -33,21 +38,14 @@ class UserBuild:
         return self._0_node_ip
 
     def user_build(self):
+        log('user_build')
         # initial import
-        log('Initial Import Tests')
+        log('Initial Imports')
         try:
             import os, sys
-            log('os, sys') 
+            log('import: os, sys') 
             from platform import platform, python_branch, python_compiler, machine, python_build
-            log('platform')
-            import datetime
-            log('datetime') 
-            from subprocess import Popen, PIPE
-            log('subprocess') 
-            from requests import get
-            log('requests') 
-            import time
-            log('time') 
+            log('import: platform')
         except:
             print('FATAL_PYTHON_BUILD_ERROR')
             error = sys.exc_info()
@@ -58,8 +56,8 @@ class UserBuild:
             log('0_SYSTEM_PYTHON_CONFIG')
             self.node = platform()
             log(self.node)
-            self._python_build = python_build()
-            log(self._python_build)
+            #self._python_build = python_build()
+            #log(self._python_build)
             self._python_compiler = python_compiler()
             log(self._python_compiler)
             self.pmachine = machine()
@@ -67,7 +65,6 @@ class UserBuild:
             log('0_SYSTEM_CONFIGFILE')
             self.n0osd = [
                 self.node,
-                self._python_build,
                 self._python_compiler,
                 self.pmachine]
             log("USER_BUILD_COMPLETE")
