@@ -1,2 +1,3 @@
-# pythos
-Python developmental environment 
+# Pythos
+
+## Python developmental environment 
