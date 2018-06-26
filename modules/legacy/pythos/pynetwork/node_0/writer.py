@@ -65,3 +65,6 @@ def ledger_constructor(ledger_file_name, block_to_write):
     except FileNotFoundError:
         print('ERROR: LEDGER__NOT__FOUND')
     
+class ConfigFile:
+    def __init__(self):
+        

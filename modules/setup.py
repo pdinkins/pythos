@@ -8,6 +8,7 @@
 '''
 
 from _log import log
+from writer import FileObject, Write2file
 
 class UserBuild:
     '''
@@ -21,6 +22,7 @@ class UserBuild:
         self.operating_sys = self.os_sys()
         self.node_ip = self.get_ip()
         self.build = self.user_build()
+        self.config_file = self._config_file()
     
     def os_sys(self):
         import platform
@@ -76,7 +78,10 @@ class UserBuild:
             print(error)
             print(sys.exc_info()[0])
             raise
-
+    
+    def _config_file(self):
+        self.__config_file = FileObject()
+        
 
 
 
