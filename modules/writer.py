@@ -21,6 +21,7 @@ class FileObject:
     def filecreator(self):
         open(self.file, mode='w')
 
+
 class Write2file:
     def __init__(self, filenameobject, data2write):
         with open(filenameobject, 'w') as fille:

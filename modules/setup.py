@@ -6,7 +6,7 @@
 # 
 # user = setup.UserBuild()
 '''
-
+import hashlib
 from _log import log
 from writer import FileObject, Write2file
 
@@ -22,8 +22,13 @@ class UserBuild:
         self.operating_sys = self.os_sys()
         self.node_ip = self.get_ip()
         self.build = self.user_build()
+        self._hash_value = self.__hash(self.build, self.node_ip)
         self.config_file = self._config_file()
-    
+
+    def __hash(self, val1, val2):
+        # reutrn hash value
+        return 0
+
     def os_sys(self):
         import platform
         return platform.system()
@@ -80,7 +85,7 @@ class UserBuild:
             raise
     
     def _config_file(self):
-        self.__config_file = FileObject()
+        self.__config_file = FileObject('cfg', 'txt')
         
 
 
