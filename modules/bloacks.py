@@ -1,3 +1,12 @@
+'''
+# BLOACKS
+# Demonstrates class logic for the genesis chain model
+#
+#
+#
+'''
+
+
 import hashlib as hasher
 import datetime as date
 
@@ -46,13 +55,11 @@ def next_block(last_block):
   this_hash = last_block.next_hash
   return nBlock(this_hash)
 
-
-
-
-
 genesis = create_genesis_block()
+
 blockchain = [genesis]
 previous_block = blockchain[0]
+
 num_of_blocks_to_add = 20
 
 # Add blocks to the chain

@@ -14,7 +14,6 @@ def webscraper():
     soup = BeautifulSoup(r.text)
     print(soup.prettify())
     f = open(filename + ".html", "w+")
-    f.write(soup.prettify())
     s = soup.prettify()
     f.write(s)
     f.close()
