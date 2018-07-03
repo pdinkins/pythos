@@ -36,3 +36,17 @@ def choose_from_menu(menulist, menu_dictionary):
 
 def quit_menu():
     quit()
+
+def os_walk():
+    pass
+    
+
+def dir_iter(module_list):
+    for i in range(0, len(module_list)):
+        print(dir(module_list[i]))
+
+
+class _Menu:
+    def __init__(self, title, choice_matrix):
+        self.title = title
+        self.choice_matrix = choice_matrix
