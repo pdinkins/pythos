@@ -11,7 +11,7 @@ not always the case. good luck
 '''
 
 from modules.menu import initialize_menu, choose_from_menu, quit_menu
-
+from modules.ntwrk import tpls_server
  
 
 
@@ -44,7 +44,8 @@ def genmatrix():
 infinity_menu = {
     "matrix": genmatrix,
     'HELP MENU': help_menu,
-    'Quit': quit_menu
+    'Quit': quit_menu,
+    '0__tpls': tpls_server.start_handshake
 }
 
 def matrixm():
