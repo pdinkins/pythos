@@ -12,7 +12,6 @@ def webscraper():
     url = input(str(" target url: "))
     r = requests.get(url)
     soup = BeautifulSoup(r.text)
-    print(soup.prettify())
     f = open(filename + ".html", "w+")
     s = soup.prettify()
     f.write(s)

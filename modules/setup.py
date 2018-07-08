@@ -1,7 +1,9 @@
 
 '''
-# setup.py 
+# SETUP
+#
 # sniffs current build and generates current config file
+#
 # import setup
 # 
 # user = setup.UserBuild()

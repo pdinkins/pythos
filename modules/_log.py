@@ -1,6 +1,12 @@
 '''
 # Logging Module:
 
+USE:
+    1. from modules._log import log
+    2. log('log message')
+
+TODO:
+    add functionality so logging can be dynamically turned on and off. 
 '''
 
 def log(message):

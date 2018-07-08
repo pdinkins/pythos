@@ -5,15 +5,15 @@ Pythos is a platform for creating developmental environments. Pythos is built on
 
 ## Modules
 */modules:*   
-- menu
-- setup
-- writer
-- setup
-- writer
-- log
-- aw
-- bbc
-- db
-- matrix
-- ntwrk
-- web
+- /menu
+- /setup
+- /writer
+- /setup
+- /writer
+- /log
+- /aw
+- /bbc
+- /db
+- /matrix
+- /ntwrk
+- /web

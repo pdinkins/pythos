@@ -3,6 +3,8 @@
 #Pythos Database
 #events|contacts|
 #csv read/write/parse/view/print/
+# this is a fragile module thats been scraped together from legacy code 
+# it needs to be updated and moved from a functional model to
 #==============================================================================================#
 #==============================================================================================#
 
