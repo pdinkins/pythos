@@ -1,9 +1,12 @@
 '''
 # tpls_server.py
 
-functional implementation of the 'transport layer security sever' or tpls_server
+functional implementation of the 
+'transport layer security sever' or tpls_server
 
-when i wrote this only God and I understood it. now only God does
+when i wrote this only God and I understood it. 
+now only God does
+
 '''
 
 import logging

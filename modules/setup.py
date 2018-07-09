@@ -36,14 +36,10 @@ class UserBuild:
         return platform.system()
     
     def get_ip(self):
-        from requests import get
-        try:
-            log('Pinging 3rd party for public IP')
-            self._0_node_ip = get('http://ip.42.pl/raw').text
-            log(self._0_node_ip)  
-        except:
-            self._0_node_ip = 'No network connection'
-            log('REQUESTS_ERROR')
+        # get
+        from a_w.orld import Location
+        self.location = Location()
+        self._0_node_ip = self.location.ip
         return self._0_node_ip
 
     def user_build(self):

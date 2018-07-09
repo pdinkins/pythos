@@ -37,6 +37,7 @@ def genmatrix():
     el1 = int(input('el1> '))
     el2 = int(input('el2> '))
     matrix(el1, el2)
+    input('>')
 
 
 # MAIN MENU DICT 
