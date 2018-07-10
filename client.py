@@ -1,74 +1,29 @@
 '''
+#==============================================================================================#
 # Pyhtos top level client interface:
 ##  Back-end, CLI interface
 
 
-
 This is the higest level client interface meaning that there may be more features 
 buried deeper in the repository. Each level may have a client module. This is 
-not always the case. good luck 
-
+not always the case. good luck ~jpd
+#==============================================================================================#
 '''
 
 from modules.menu import initialize_menu, choose_from_menu, quit_menu
 from modules.ntwrk import tpls_server
- 
-
-
-def help_menu():
-    '''
-    TODO: Internal documentation for interacting with the client interface
-    '''
-    print(
-        """
-        you found the help page.
-        have you even read the source code? 
-        did you actually read it though?
-
-
-        the best help is the help you give yourself
-        """
-    )
-    inp = input('> ')
-
-
-def genmatrix():
-    from modules.matix.main import matrix
-    el1 = int(input('el1> '))
-    el2 = int(input('el2> '))
-    matrix(el1, el2)
-    input('>')
-
-
-# MAIN MENU DICT 
-# menu.py for more documentation
-infinity_menu = {
-    "matrix": genmatrix,
-    'HELP MENU': help_menu,
-    'Quit': quit_menu,
-    '0__tpls': tpls_server.start_handshake
-}
-
-def matrixm():
-    # Launch the terminal menu interface 
-    initialize_menu(infinity_menu, 'BB Main Menu') 
-
-
+from modules.matix import main
 from time import sleep
 import os
 
-login = False
+
+login = True
 run = True
 titlestat = [0]
 
-if login == False:
-    titlestat.clear()
-    titlestat.append(2)
-
-
+#==============================================================================================#
 #### Classes
 class Admin:
-
     def __init__(self, username, password):
         self.username = username
         self.password = password
@@ -82,8 +37,43 @@ class DateTime():
 admin1 = Admin('admin', 'password')
 # hint: this line 
 dt1 = DateTime()
+#==============================================================================================#
 
+def help_menu():
+    '''
+    TODO: Add more sarcastic comments for laughs.
+    '''
+    print(
+        """
+        _______HELP_PAGE_______
+        =======================
+        
+        have you even read the source code? 
+        
+        did you actually read it though?
 
+        seriously read the source for documentation though
+        
+        the best help is the help you give yourself.
+        
+
+        for root, dirs, files in os.walk(".", topdown=True):
+            for file in files:
+                print(os.path.join(root, file))
+
+            for name in dirs:
+                print(os.path.join(root, name))
+
+        for dir in dirs:
+            dirpath = os.path.join(root, dir)
+            dirsize = os.path.getsize(dirpath)
+            print(index, '\t\t', dirsize, '\t\t', dirpath)
+            index += 1
+        """
+    )
+    input('> ')
+
+#==============================================================================================#
 def title():
     # running titlebar
     print('=' * 80)
@@ -104,15 +94,12 @@ def title():
         print('=' * 80)
 
 def clear():
-    try:
+    import platform
+    ops = platform.system()
+    if ops == 'Darwin':
+        os.system('clear')
+    else:
         os.system('cls')
-    
-    except:
-        
-        import platform
-        ops = platform.system()
-        if ops == 'Darwin':
-            os.system('clear')
 
 def refresh_screen():
     clear()
@@ -120,10 +107,15 @@ def refresh_screen():
 
 
 
-
+#==============================================================================================#
 ####### LOGIN SEQUENCE #######
+
+if login == False:
+    titlestat.clear()
+    titlestat.append(2)
+
 while login:
-    title()
+    #title()
     usn = input('username: ')
     if usn != admin1.username:
         titlestat.clear()
@@ -144,71 +136,62 @@ while login:
             refresh_screen()
             break
 
+#==============================================================================================#
+# MATRIX MENU
+#==============================================================================================#
+def genmatrix():
+    el1 = int(input('el1> '))
+    el2 = int(input('el2> '))
+    main.matrix(el1, el2)
+    input('>')
 
+infinity_menu = {
+    "matrix": genmatrix,
+    'HELP MENU': help_menu,
+    'Quit': quit_menu,
+    'tpls start handshake': tpls_server.start_handshake
+}
+
+def matrixm():
+    # Launch the terminal menu interface 
+    initialize_menu(infinity_menu, 'BB Main Menu') 
+#==============================================================================================#
+
+
+#==============================================================================================#
 def rfsm():
     path = input('path>')
     p = rfs(path)
     print(p)
 
 def rfs(pathname):
+    
     index = 0
     tsizevar = 0
-    '''
-    for root, dirs, files in os.walk(".", topdown=True):
-        for file in files:
-            print(os.path.join(root, file))
-
-        for name in dirs:
-            print(os.path.join(root, name))
-    '''
     print('\n\nINDEX\t\tSIZE\t\tDIRECTORY')
     print('=' * 80)
     for root, dirs, files in os.walk(pathname):
         for file in files:
-            pathname = os.path.join(root, file)
-            size = os.path.getsize(pathname)
-            tsizevar += size
-            print(index, '\t\t', size, '\t\t', pathname)
-            index += 1
+            try:
+                try:
+                    pathname = os.path.join(root, file)
+                    size = os.path.getsize(pathname)
+                    tsizevar += size
+                    print(index, '\t\t', size, '\t\t', pathname)
+                    index += 1
+                except PermissionError:
+                    print('perm error')
+
+            except (FileNotFoundError, OSError):
+                print('file not found error')
 
     returndata = {'indexed files': index,'totalsize': tsizevar}
     print(returndata)
     input('>')
     return returndata
 
-
-    '''
-        for dir in dirs:
-            dirpath = os.path.join(root, dir)
-            dirsize = os.path.getsize(dirpath)
-            print(index, '\t\t', dirsize, '\t\t', dirpath)
-            index += 1
-    '''     
-
-
-
-def rootfile_list():
-    spath = 'C:/'
-    rootfilelist = os.listdir(spath)
-    root_dict = rootfilelist
-    try:
-        for i in range(0, len(root_dict)):
-                path = 'C:/' + root_dict[i]
-                subroot = os.listdir(path)
-                print('\t', path)
-                
-                for j in range(0, len(subroot)):
-                    print('\t\t',j, subroot[j])
-
-    except (TypeError, NotADirectoryError):
-        #print('type error')
-        pass
-    input('rootfile_list>\t')
-    return rootfilelist
-
-
 def rootfile_list_2():
-    spath = 'C:/'
+    spath = '/'
     rootfilelist = os.listdir(spath)
     root_dict = rootfilelist
     
@@ -218,16 +201,13 @@ def rootfile_list_2():
     input('rootfile_list>\t')
     return rootfilelist
         
-
-
+# Main menu dictionary
 mm = {
-    'root file system list': rootfile_list,
     'root file system list 2': rootfile_list_2,
     'directory info': rfsm,
     'matrix': matrixm
 }
-
-
+#==============================================================================================#
 ######## APP INTERFACE ########
 while run:
     refresh_screen()
@@ -237,6 +217,10 @@ while run:
         print('LOGING OUT OF THE MATRIX')
         clear()
         break
+    
+    elif command == "help":
+        refresh_screen()
+        help_menu()
 
     elif command == '1':
         refresh_screen()              
@@ -246,4 +230,8 @@ while run:
         path = input('path >\t')
         rfs(path)
         command = input('>')
+    
+    else:
+        eval(command)
 
+#==============================================================================================#
