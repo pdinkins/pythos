@@ -17,7 +17,7 @@ from time import sleep
 import os
 
 
-login = True
+login = False
 run = True
 titlestat = [0]
 
@@ -231,7 +231,14 @@ while run:
         rfs(path)
         command = input('>')
     
+    elif command == '':
+        refresh_screen()
+    
     else:
-        eval(command)
-
+        try:
+            print(eval(command))
+            input('>')
+        except (NameError, SyntaxError):
+            print('ERROR')
+            input('>')
 #==============================================================================================#

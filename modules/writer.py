@@ -1,7 +1,19 @@
 '''
-Writer module:
-This module interacts with files and contians the classes
-neccesasry for that intrction
+# WRITER
+
+This module interacts with files and contians:
+    Classes
+        FileObject
+        Write2file
+
+USE:
+    1. import writer
+    2. file_obj = writer.FileObject('name', 'filetype')
+    3. Write2file(file_obj.file, 'data 2 be written to the file')
+
+
+Three lines of code is all it takes and is all it should take,
+to make a file and write something to a it.
 '''
 
 class FileObject:
