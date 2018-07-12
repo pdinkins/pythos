@@ -37,5 +37,5 @@ class FileObject:
 class Write2file:
     def __init__(self, filenameobject, data2write):
         with open(filenameobject, 'w') as fille:
-            fille.write(data2write)
+            file.write(data2write)
 
