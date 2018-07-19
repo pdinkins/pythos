@@ -1,4 +1,3 @@
-
 def webscraper():
     '''
     input file name

@@ -10,7 +10,6 @@
 '''
 import hashlib
 from _log import log
-from writer import FileObject, Write2file
 
 class UserBuild:
     '''
